@@ -1,0 +1,17 @@
+{
+  "name": "google-apps-script-storageservice",
+  "version": "1.0.0",
+  "description": "Utility class for storing values in Google Apps Scripts",
+  "main": "dist/StorageService.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "John Turner",
+  "license": "MIT",
+  "devDependencies": {
+    "@google/clasp": "^2.1.0",
+    "@types/google-apps-script": "^0.0.47",
+    "prettier": "^1.17.1",
+    "typescript": "^3.4.5"
+  }
+}
