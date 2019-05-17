@@ -34,38 +34,38 @@ The `StorageService` class has 4 methods that you can use.
 
 **Note**: Currently, each method expects that you'll be passing a `string` to store, or receiving a `string` from storage. In the future, we might change this. For now, though, you'll just need to do a simple conversion prior to storing, and after receiving (if you're attempting to store anything other than a `string`).
 
-### storeValue
+### store
 
 ```typescript
-const key = "foo";
+const key = 'foo';
 const value = {
-  bar: "baz"
+  bar: 'baz',
 };
 
-StorageService.storeValue(key, JSON.stringify(value1));
+StorageService.store(key, JSON.stringify(value1));
 ```
 
 **Note**: You would not need to `JSON.stringify()` the value if you're simply storing a `string`.
 
-### getValue
+### get
 
 ```typescript
-const key = "foo";
-const value = JSON.parse(StorageService.getValue(key));
+const key = 'foo';
+const value = JSON.parse(StorageService.get(key));
 ```
 
 **Note**: You would not need to `JSON.parse()` the value if you're simply storing a `string`.
 
-### deleteValue
+### delete
 
 ```typescript
-const key = "foo";
+const key = 'foo';
 
-StorageService.deleteValue(key);
+StorageService.delete(key);
 ```
 
-### deleteAllValues
+### deleteAll
 
 ```typescript
-StorageService.deleteAllValues();
+StorageService.deleteAll();
 ```
