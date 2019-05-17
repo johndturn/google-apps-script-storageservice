@@ -10,14 +10,14 @@ var MULTI_PART_STORAGE_VALUE = 'MULTI_PART_STORAGE_ENABLED';
 var StorageService = /** @class */ (function () {
     function StorageService() {
     }
-    StorageService.getValue = function (key) {
+    StorageService.get = function (key) {
         var value = PropertiesService.getUserProperties().getProperty(this.generatePrefixedKey(key));
         if (value === MULTI_PART_STORAGE_VALUE) {
             return this.getMultiPartValue(key);
         }
         return value;
     };
-    StorageService.storeValue = function (key, value) {
+    StorageService.store = function (key, value) {
         if (value.length >= PER_VALUE_STORAGE_LIMIT) {
             this.storeMultiPartValue(key, value);
         }
@@ -25,10 +25,10 @@ var StorageService = /** @class */ (function () {
             PropertiesService.getUserProperties().setProperty(this.generatePrefixedKey(key), value);
         }
     };
-    StorageService.deleteValue = function (key) {
+    StorageService["delete"] = function (key) {
         PropertiesService.getUserProperties().deleteProperty(this.generatePrefixedKey(key));
     };
-    StorageService.deleteAllValues = function () {
+    StorageService.deleteAll = function () {
         PropertiesService.getUserProperties().deleteAllProperties();
     };
     StorageService.generatePrefixedKey = function (key) {

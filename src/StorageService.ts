@@ -3,12 +3,12 @@
 // slightly here in order to avoid the app crashing when storing
 // large values
 const PER_VALUE_STORAGE_LIMIT = 8500;
-const MULTI_PART_STORAGE_VALUE = "MULTI_PART_STORAGE_ENABLED";
+const MULTI_PART_STORAGE_VALUE = 'MULTI_PART_STORAGE_ENABLED';
 
 class StorageService {
-  public static getValue(key: string): string {
+  public static get(key: string): string {
     const value = PropertiesService.getUserProperties().getProperty(
-      this.generatePrefixedKey(key)
+      this.generatePrefixedKey(key),
     );
 
     if (value === MULTI_PART_STORAGE_VALUE) {
@@ -18,24 +18,24 @@ class StorageService {
     return value;
   }
 
-  public static storeValue(key: string, value: string): void {
+  public static store(key: string, value: string): void {
     if (value.length >= PER_VALUE_STORAGE_LIMIT) {
       this.storeMultiPartValue(key, value);
     } else {
       PropertiesService.getUserProperties().setProperty(
         this.generatePrefixedKey(key),
-        value
+        value,
       );
     }
   }
 
-  public static deleteValue(key: string): void {
+  public static delete(key: string): void {
     PropertiesService.getUserProperties().deleteProperty(
-      this.generatePrefixedKey(key)
+      this.generatePrefixedKey(key),
     );
   }
 
-  public static deleteAllValues(): void {
+  public static deleteAll(): void {
     PropertiesService.getUserProperties().deleteAllProperties();
   }
 
@@ -70,6 +70,6 @@ class StorageService {
       newChunk = properties.getProperty(`${prefixedKey}${chunkNumber}`);
     }
 
-    return value.join("");
+    return value.join('');
   }
 }
