@@ -7,7 +7,7 @@ Small utility class built in TypeScript for storing [almost] any sized values in
 The nature of how the JavaScript runtime executes on Google Apps Scripts projects makes it inherently difficult to store centralized state. The one way that I've found to consistently store and maintain state for a larger Google Apps Script project (like an add-on) is through storing values in one of the 3 different [Properties](https://developers.google.com/apps-script/reference/properties/properties-service) locations. There are a couple of downsides to using this as your state store, however:
 
 1. Whatever you're storing must be a `key: value` combination, both of which must be `string`s.
-1. There is an overall limit to the amount stored in a single property location (At this time, it 500MB, though, so that really hasn't been a major issue for projects that I've worked on).
+1. There is an overall limit to the amount stored in a single property store (At this time, it 500KB).
 1. There is a limit to the size of a single `value` that you store per key (at this time, it's 9KB, which can definitely get in the way).
 
 This StorageService class can help overcome some of these hurdles.
